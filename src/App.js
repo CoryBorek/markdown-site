@@ -1,4 +1,3 @@
-import HomePage from "./pages/HomePage";
 import MDPage from "./pages/MDPage";
 import { BrowserRouter as Router, Switch, Route,  } from "react-router-dom";
 import MDPageWrapper from "./pages/MDPageWrapper";
