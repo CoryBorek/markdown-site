@@ -1,6 +1,10 @@
 import fetch from 'cross-fetch';
 import { useState } from 'react';
 import Markdown from 'react-markdown';
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
+import remarkGfm from 'remark-gfm'
+
 
 const MDPage = (props) => {
 
@@ -29,7 +33,7 @@ const MDPage = (props) => {
 
     loadData();
     return (<div>
-        <Markdown>
+        <Markdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>
             {md}
         </Markdown>
     </div>)

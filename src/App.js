@@ -1,4 +1,5 @@
 import MDPage from "./pages/MDPage";
+import MDTest from "./pages/MDTest"
 import { BrowserRouter as Router, Switch, Route,  } from "react-router-dom";
 import MDPageWrapper from "./pages/MDPageWrapper";
 function App() {
@@ -7,13 +8,20 @@ function App() {
     <Router>
       <Switch>
 
+      <Route path="/builtin/test">
+          <MDTest />
+        </Route>
+
         <Route path="/:id">
           <MDPageWrapper />
         </Route>
 
+        
         <Route path="/">
         <MDPage id="/" />
         </Route>
+
+
 
       </Switch>
     </Router>
