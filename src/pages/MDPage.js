@@ -11,13 +11,17 @@ const MDPage = (props) => {
         id += "index";
     }
 
-    let site = process.env.REACT_APP_SITE + id  + ".md"
+    let site = process.env.REACT_APP_RAW_BASE
+     + process.env.REACT_APP_REPO
+      + "/"
+       + process.env.REACT_APP_BRANCH + "/" + id  + ".md"
 
 
     async function loadData() {
         setMd(await fetch(site).then(res => {
             if (res.status >= 400) {
-                return "# Not Found!"
+                return "### 404: File Not Found!\nTry another page, if that doesn't work, go to " + 
+                process.env.REACT_APP_GIT_BASE + process.env.REACT_APP_REPO + "/.";
             }
             return res.text();
         }))
