@@ -11,17 +11,17 @@
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
     "react-router-dom": "^5.3.4",
-    "react-scripts": "5.0.1",
     "rehype-katex": "^7.0.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && @powershell copy build/index.html build/404.html",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "r3f-pack start",
+    "build": "r3f-pack build && @powershell copy build/index.html build/404.html",
+    "buildByDate": "r3f-pack buildByDate",
+    "test": "r3f-pack test",
+    "eject": "r3f-pack eject",
     "deploy": "npm run build && gh-pages -d build"
   },
   "eslintConfig": {
@@ -41,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "r3f-pack": "github:CoryBorek/r3f-pack"
   }
 }

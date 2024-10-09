@@ -7,9 +7,9 @@ import { useLocation } from 'react-router-dom';
 
 
 const MDPage = () => {
-
+    const debug = false;
     const location = useLocation();
-    const [md, setMd] = useState("Loading...");
+    const [md, setMd] = useState("### Loading...");
     let id = location.pathname;
 
     if (id === "") {
@@ -21,7 +21,7 @@ const MDPage = () => {
     }
 
 
-    let site = process.env.REACT_APP_RAW_BASE
+    let site = debug ? "http://localhost:3000/" + process.env.REACT_APP_REPO + "/" + id + ".md" : process.env.REACT_APP_RAW_BASE
      + process.env.REACT_APP_REPO
       + "/"
        + process.env.REACT_APP_BRANCH + "/" + id  + ".md"
