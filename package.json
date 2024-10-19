@@ -1,6 +1,6 @@
 {
   "name": "notes",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -11,6 +11,7 @@
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
     "react-router-dom": "^5.3.4",
+    "react-syntax-highlighter": "^15.6.1",
     "rehype-katex": "^7.0.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
@@ -43,6 +44,6 @@
     ]
   },
   "devDependencies": {
-    "r3f-pack": "github:CoryBorek/r3f-pack"
+    "r3f-pack": "^3.0.9"
   }
 }

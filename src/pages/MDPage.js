@@ -1,11 +1,6 @@
 import { useState } from 'react';
-import Markdown from 'react-markdown';
-import rehypeKatex from 'rehype-katex';
-import remarkMath from 'remark-math';
-import remarkGfm from 'remark-gfm'
 import { useLocation } from 'react-router-dom';
-
-
+import MD from '../components/MD';
 const MDPage = () => {
     const location = useLocation();
     const [md, setMd] = useState("### Loading...");
@@ -39,9 +34,9 @@ const MDPage = () => {
 
     loadData();
     return (<div>
-        <Markdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>
+        <MD>
             {md}
-        </Markdown>
+        </MD>
     </div>)
 }
 

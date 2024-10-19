@@ -1,16 +1,12 @@
-import Markdown from 'react-markdown';
-import rehypeKatex from 'rehype-katex';
-import remarkMath from 'remark-math';
-import remarkGfm from 'remark-gfm'
-
+import MD from '../components/MD';
 
 const MDTest = () => {
 
-    const md ="### Built in Display Test Page\n\n*italics*\n\n**bold**\n\n - test\n\n\nMath! $f(n) = \\log_2(2)$";
+    const md ="### Built in Display Test Page\n\n*italics*\n\n**bold**\n\n - test\n\n\nMath! $f(n) = \\log_2(2)$\n\n\nCode: \n```c\nint main(int argc, char * argv[]) {\n  printf(\"Hello, World\\n\");\n}\n```\n";
     return (<div>
-        <Markdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>
+        <MD>
             {md}
-        </Markdown>
+        </MD>
     </div>)
 }
 
