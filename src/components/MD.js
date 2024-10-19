@@ -26,9 +26,13 @@ const MD = (props) => {
                         style={ghcolors}
                     />
                 ) : (
-                    <code {...rest} className={className}>
-                        {children}
-                    </code>
+                    <SyntaxHighlighter
+                        {...rest}
+                        PreTag="div"
+                        children={String(children).replace(/\n$/, '')}
+                        language={"language-markdown"}
+                        style={ghcolors}
+                    />
                 )
             }
         }} />
