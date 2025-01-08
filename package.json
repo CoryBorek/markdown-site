@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "r3f-pack start",
-    "build": "r3f-pack build && @powershell copy build/index.html build/404.html",
+    "build": "r3f-pack build && cp build/index.html build/404.html",
     "buildByDate": "r3f-pack buildByDate",
     "test": "r3f-pack test",
     "eject": "r3f-pack eject",
