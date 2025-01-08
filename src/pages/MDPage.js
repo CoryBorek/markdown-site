@@ -8,6 +8,10 @@ const MDPage = () => {
 
     let types = [".c", ".java"];
 
+    let host = window.location.host;
+
+    host = host.includes("localhost") ? "http://" + host : "https://" + host;
+
     let site = process.env.REACT_APP_DEBUG === "true" ? "http://localhost:3000/" + process.env.REACT_APP_REPO + "/" : process.env.REACT_APP_RAW_BASE + process.env.REACT_APP_REPO + "/" + process.env.REACT_APP_BRANCH + "/";
 
     let code = false;
@@ -44,9 +48,9 @@ const MDPage = () => {
             }
             return res.text();
         });
-	
+    md2 = md2.replaceAll("%WEBPATH%", host);
 	if (code === true) {
-		md2 = "# " + id.replaceAll("_", ".") + "\n```" + codeType + md2 + "\n```\n\n[Source Code](" + site + ")";
+		md2 = "# " + id.replaceAll("_", ".") + "\n```" + codeType + "\n" + md2 + "\n```\n\n[Source Code](" + site + ")";
 	}
         setMd(md2);
     }
