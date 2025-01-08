@@ -49,6 +49,12 @@ const MDPage = () => {
             return res.text();
         });
     md2 = md2.replaceAll("%WEBPATH%", host);
+    md2 = md2.replaceAll("%GITBASE%", process.env.REACT_APP_GIT_BASE);
+    md2 = md2.replaceAll("%REPO%", process.env.REACT_APP_REPO);
+    md2 = md2.replaceAll("%BRANCH%", process.env.REACT_APP_BRANCH);
+    md2 = md2.replaceAll("%RAWBASE%", process.env.REACT_APP_RAW_BASE);
+    md2 = md2.replaceAll("%DEBUG%", process.env.REACT_APP_DEBUG);
+
 	if (code === true) {
 		md2 = "# " + id.replaceAll("_", ".") + "\n```" + codeType + "\n" + md2 + "\n```\n\n[Source Code](" + site + ")";
 	}
