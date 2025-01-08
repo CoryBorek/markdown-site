@@ -46,7 +46,7 @@ const MDPage = () => {
         });
 	
 	if (code === true) {
-		md2 = "# " + id.replaceAll("_", ".") + "\n```" + codeType + md2 + "```";
+		md2 = "# " + id.replaceAll("_", ".") + "\n```" + codeType + md2 + "\n```\n\n[Source Code](" + site + ")";
 	}
         setMd(md2);
     }
