@@ -15,7 +15,7 @@ const MDLocal = (props) => {
 	let md2 = await fetch(site, {cache: "no-store"}).then(res => {
             console.log(res);
             if (res.status >= 400) {
-                return "### 404: File Not Found!\nThere needs to be a status page in the public folder.";
+                return "### 404: File Not Found!\nThere is no file in the public folder";
             }
             return res.text();
         });

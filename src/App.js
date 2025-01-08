@@ -8,11 +8,11 @@ function App() {
     <Router>
       <Switch>
 
-        <Route path="/builtin/test">
+        <Route exact path="/builtin/test">
             <MDLocal page="test"/>
         </Route>
 
-        <Route path="/status">
+        <Route exact path="/status">
           <MDLocal page="status"/>
        </Route>
 
