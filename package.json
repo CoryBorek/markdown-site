@@ -26,6 +26,7 @@
     "deploy": "npm run build && gh-pages -d build",
     "dev-prebuild": "mv public/CoryBorek/notes-md ..",
     "dev-postbuild": "mv ../notes-md public/CoryBorek",
+    "dev-commit": "npm run dev-prebuild && git add -A && npm run dev-postbuild",
     "dev-build": "npm run dev-prebuild && npm run build && npm run dev-postbuild && cd build && git init && git branch -M main && git add -A && git commit -m \"build\""
   },
   "eslintConfig": {
