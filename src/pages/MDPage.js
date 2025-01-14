@@ -6,7 +6,7 @@ const MDPage = () => {
     const [md, setMd] = useState("### Loading...");
     let id = location.pathname;
 
-    let types = [".c", ".java"];
+    let types = [".c", ".java", "Makefile", ".asm", ".s"];
 
     let host = window.location.host;
 
