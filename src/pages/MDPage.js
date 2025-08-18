@@ -35,7 +35,7 @@ const MDPage = (props) => {
 
         const data = await loadData();
 
-        let site = data.debug === "true" ? "http://localhost:3000/" + data.markdown.repo + "/" : data.markdown.raw_base + data.markdown.repo + "/" + data.markdown.branch + "/";
+        let site = data.debug === "true" ? getHost() + data.markdown.repo + "/" : data.markdown.raw_base + data.markdown.repo + "/" + data.markdown.branch + "/";
 	    
         if (code === false) {
     	    site += id + ".md";
@@ -58,9 +58,9 @@ const MDPage = (props) => {
         md2 = md2.replaceAll("%RAWBASE%", data.markdown.raw_base);
         md2 = md2.replaceAll("%DEBUG%", data.debug);
 
-	if (code === true) {
-		md2 = "# " + id.replaceAll("_", ".") + "\n```" + codeType + "\n" + md2 + "\n```\n\n[Source Code](" + site + ")";
-	}
+        if (code === true) {
+            md2 = "# " + id.replaceAll("_", ".") + "\n```" + codeType + "\n" + md2 + "\n```\n\n[Source Code](" + site + ")";
+        }
         setMd(md2);
     }
 

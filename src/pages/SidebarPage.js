@@ -24,7 +24,7 @@ const SidebarPage = (props) => {
 
         const data = await loadData();
 
-        let site = data.debug === "true" ? "http://localhost:3000/" + data.markdown.repo + "/" : data.markdown.raw_base + data.markdown.repo + "/" + data.markdown.branch + "/";
+        let site = data.debug === "true" ? getHost() + data.markdown.repo + "/" : data.markdown.raw_base + data.markdown.repo + "/" + data.markdown.branch + "/";
 	    
     	    site += id + ".md";
 
