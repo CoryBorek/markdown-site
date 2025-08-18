@@ -1,19 +1,16 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import MD from '../components/MD';
-const MDPage = () => {
+import { getHost, loadData } from '../Util';
+const MDPage = (props) => {
     const location = useLocation();
     const [md, setMd] = useState("### Loading...");
     let id = location.pathname;
 
     let types = [".c", ".java", "Makefile", ".asm", ".s"];
 
-    let host = window.location.host;
-
-    host = host.includes("localhost") ? "http://" + host : "https://" + host;
-
-    let site = process.env.REACT_APP_DEBUG === "true" ? "http://localhost:3000/" + process.env.REACT_APP_REPO + "/" : process.env.REACT_APP_RAW_BASE + process.env.REACT_APP_REPO + "/" + process.env.REACT_APP_BRANCH + "/";
-
+    let host = getHost();
+    
     let code = false;
     let codeType = "";
 
@@ -22,11 +19,10 @@ const MDPage = () => {
 	if (id.replaceAll("_", ".").endsWith(types[i])) {
 	    site += id.replaceAll("_", ".");
 	    code = true;
-	    console.log(types[i]);
 	    codeType = types[i].substring(1);
 	}
     }
-    
+
     if (id === "") {
         id = "/"
     }
@@ -35,25 +31,32 @@ const MDPage = () => {
         id += "index"
     }
 
-    if (code === false) {
-    	site += id + ".md";
-    }
+    async function loadMarkdown(code, codeType) {
 
-    async function loadData(code, codeType) {
-	let md2 = await fetch(site, {cache: "no-store"}).then(res => {
-            console.log(res);
+        const data = await loadData();
+
+        let site = data.debug === "true" ? "http://localhost:3000/" + data.markdown.repo + "/" : data.markdown.raw_base + data.markdown.repo + "/" + data.markdown.branch + "/";
+	    
+        if (code === false) {
+    	    site += id + ".md";
+        }
+        
+        let md2 = await fetch(site, {cache: "no-store"}).then(res => {
             if (res.status >= 400) {
                 return "### 404: File Not Found!\nTry another page, if that doesn't work, go to [" + 
-                process.env.REACT_APP_GIT_BASE + process.env.REACT_APP_REPO + "/](" + process.env.REACT_APP_GIT_BASE + process.env.REACT_APP_REPO + "/).";
+                data.markdown.git_base + data.markdown.repo + "/](" + data.markdown.git_base + data.markdown.repo + "/).";
             }
             return res.text();
         });
-    md2 = md2.replaceAll("%WEBPATH%", host);
-    md2 = md2.replaceAll("%GITBASE%", process.env.REACT_APP_GIT_BASE);
-    md2 = md2.replaceAll("%REPO%", process.env.REACT_APP_REPO);
-    md2 = md2.replaceAll("%BRANCH%", process.env.REACT_APP_BRANCH);
-    md2 = md2.replaceAll("%RAWBASE%", process.env.REACT_APP_RAW_BASE);
-    md2 = md2.replaceAll("%DEBUG%", process.env.REACT_APP_DEBUG);
+
+        
+
+        md2 = md2.replaceAll("%WEBPATH%", host + "notes");
+        md2 = md2.replaceAll("%GITBASE%", data.markdown.git_base);
+        md2 = md2.replaceAll("%REPO%", data.markdown.repo);
+        md2 = md2.replaceAll("%BRANCH%", data.markdown.branch);
+        md2 = md2.replaceAll("%RAWBASE%", data.markdown.raw_base);
+        md2 = md2.replaceAll("%DEBUG%", data.debug);
 
 	if (code === true) {
 		md2 = "# " + id.replaceAll("_", ".") + "\n```" + codeType + "\n" + md2 + "\n```\n\n[Source Code](" + site + ")";
@@ -61,8 +64,10 @@ const MDPage = () => {
         setMd(md2);
     }
 
-    loadData(code, codeType);
-    return (<div>
+    if (md === "### Loading...") {
+        loadMarkdown(code, codeType);
+    }
+    return (<div style={{width: "90%", marginLeft: "auto", marginRight: "auto"}}>
         <MD>
             {md}
         </MD>

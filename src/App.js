@@ -1,4 +1,4 @@
-import MDPage from "./pages/MDPage";
+import SidebarPage from "./pages/SidebarPage";
 import MDLocal from "./pages/MDLocal";
 import { BrowserRouter as Router, Switch, Route,  } from "react-router-dom";
 
@@ -17,7 +17,7 @@ function App() {
        </Route>
 
         <Route path="/">
-          <MDPage />
+          <SidebarPage />
         </Route>
       </Switch>
     </Router>

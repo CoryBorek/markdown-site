@@ -1,0 +1,9 @@
+{
+    "debug": "true",
+    "markdown": {
+        "raw_base": "https://raw.githubusercontent.com/",
+        "git_base": "https://github.com/",
+        "branch": "main",
+        "repo": "CoryBorek/notes-md"
+    }
+}
