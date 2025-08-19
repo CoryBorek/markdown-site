@@ -25,7 +25,6 @@ async function loadData() {
 function getHost() {
     let host = window.location.host;
     host = host.includes("localhost") ? "http://" + host : "https://" + host;
-    host += "/";
     return host;
 }
 
