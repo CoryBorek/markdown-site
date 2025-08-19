@@ -20,7 +20,7 @@ const MDLocal = (props) => {
 
         
 
-        md2 = md2.replaceAll("%WEBPATH%", host + "docs");
+        md2 = md2.replaceAll("%WEBPATH%");
         md2 = md2.replaceAll("%GITBASE%", data.markdown.git_base);
         md2 = md2.replaceAll("%REPO%", data.markdown.repo);
         md2 = md2.replaceAll("%BRANCH%", data.markdown.branch);

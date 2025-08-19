@@ -51,7 +51,7 @@ const MDPage = (props) => {
 
         
 
-        md2 = md2.replaceAll("%WEBPATH%", host + "notes");
+        md2 = md2.replaceAll("%WEBPATH%", host);
         md2 = md2.replaceAll("%GITBASE%", data.markdown.git_base);
         md2 = md2.replaceAll("%REPO%", data.markdown.repo);
         md2 = md2.replaceAll("%BRANCH%", data.markdown.branch);
